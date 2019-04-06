@@ -55,7 +55,8 @@ Suppose $\mathbb{X}$ is the instance space, and $d$ be some metric on $\mathbb{X
 
 \subsubsection{Common distance metrics}
 The distance between points $x$ and $y$ is denoted as $d(x,y)$\mathmarginbox{$d(x,y)$}.
-
+\setlength{\columnseprule}{0.4pt}
+\begin{multicols}{2}
 \highlight{Euclidean distance} with $\mathbb{X} = \mathbb{R}^l$:
 \begin{equation}
 d(x,y) = \sqrt{\sum^{l}_{i=1} (x_i - y_i)^2}
@@ -65,8 +66,10 @@ d(x,y) = \sqrt{\sum^{l}_{i=1} (x_i - y_i)^2}
 \begin{equation}
 d(x,y) = \sum^{l}_{i=1}|x_i-y_i|
 \end{equation}
-
+\columnbreak
+\\
 \highlight{Hamming distance} with $\mathbb{X} = \mathbb{D}_1 \times \mathbb{D}_2 \times \ldots \times \mathbb{D}_l$
 \begin{equation}
 d(x,y) = |\{\,i\,|\, x_i \neq y_i\}|
 \end{equation}
+\end{multicols}
