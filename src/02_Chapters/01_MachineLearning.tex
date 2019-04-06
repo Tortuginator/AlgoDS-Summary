@@ -57,18 +57,18 @@ Suppose $\mathbb{X}$ is the instance space, and $d$ be some metric on $\mathbb{X
 The distance between points $x$ and $y$ is denoted as $d(x,y)$\mathmarginbox{$d(x,y)$}.
 \setlength{\columnseprule}{0.4pt}
 \begin{multicols}{2}
-\highlight{Euclidean distance} with $\mathbb{X} = \mathbb{R}^l$:
+\highlight{Euclidean distance} with $\mathbb{X} = \mathbb{R}^\ell$:
 \begin{equation}
-d(x,y) = \sqrt{\sum^{l}_{i=1} (x_i - y_i)^2}
+d(x,y) = \sqrt{\sum^{\ell}_{i=1} (x_i - y_i)^2}
 \end{equation}
 
-\highlight{Manhattan distance} with $\mathbb{X} = \mathbb{R}^l$:
+\highlight{Manhattan distance} with $\mathbb{X} = \mathbb{R}^\ell$:
 \begin{equation}
-d(x,y) = \sum^{l}_{i=1}|x_i-y_i|
+d(x,y) = \sum^{\ell}_{i=1}|x_i-y_i|
 \end{equation}
 \columnbreak
 \\
-\highlight{Hamming distance} with $\mathbb{X} = \mathbb{D}_1 \times \mathbb{D}_2 \times \ldots \times \mathbb{D}_l$
+\highlight{Hamming distance} with $\mathbb{X} = \mathbb{D}_1 \times \mathbb{D}_2 \times \ldots \times \mathbb{D}_\ell$
 \begin{equation}
 d(x,y) = |\{\,i\,|\, x_i \neq y_i\}|
 \end{equation}
@@ -101,14 +101,14 @@ TODO: Greedy Algorithm for Building Decision Trees
 \section{The Perceptron}
 The perceptron algorithm attempts tom find a linear classifier for a Boolean classification problem.
 \subsection{Scalar product}
-Two vectors, $\mathbf{x} = (x_1,\ldots,x_l)^T$, $\mathbf{y} = (y_1,\ldots,y_l)^T \in \mathbb{R}^l$ \mathmarginbox{$\langle \mathbf{x},\mathbf{y} \rangle$}
+Two vectors, $\mathbf{x} = (x_1,\ldots,x_l)^T$, $\mathbf{y} = (y_1,\ldots,y_l)^T \in \mathbb{R}^\ell$ \mathmarginbox{$\langle \mathbf{x},\mathbf{y} \rangle$}
 \begin{equation*}
-\langle \mathbf{x},\mathbf{y} \rangle = \sum_{i=1}^{l} x_iy_i
+\langle \mathbf{x},\mathbf{y} \rangle = \sum_{i=1}^{\ell} x_iy_i
 \end{equation*}
 \subsection{Euclidean norm}
 Vector $\mathbf{x} \in \mathbb{R}^l$ \mathmarginbox{$\lVert \mathbf{x} \rVert$}
 \begin{equation*}
-\lVert \mathbf{x} \rVert = \sqrt{\langle \mathbf{x},\mathbf{x} \rangle} = \sqrt{ \sum_{i=1}^{l} x_i^2}
+\lVert \mathbf{x} \rVert = \sqrt{\langle \mathbf{x},\mathbf{x} \rangle} = \sqrt{ \sum_{i=1}^{\ell} x_i^2}
 \end{equation*}
 \subsection{Cauchy-Schwarz Inequality}
 \begin{equation}
@@ -116,6 +116,9 @@ Vector $\mathbf{x} \in \mathbb{R}^l$ \mathmarginbox{$\lVert \mathbf{x} \rVert$}
 \end{equation}
 
 \subsection{Hyperplanes}
+A (affine) \highlight{Hyperplane} in $\mathbb{R}^l$ ist an affine subspace of dimension $\ell -1$. The hyperplane then describes the set of all solutions $a_1x_1 + \ldots + a_\ell x_\ell = b$ where $a_1,\ldots,a_\ell,b \in \mathbb{R}$. In short:  $\langle\mathbf{a}, \mathbf{x}\rangle= b \text { or }\langle\mathbf{a}, \mathbf{x}\rangle- b=0$.
+
+A \highlight{homogeneous hyperplane} is defined as a hyperplane $P = \{x\,|\,\langle\mathbf{a}, \mathbf{x}\rangle = b\}$ which is homogeneous if $b = 0$, or equivalently, if $0 \in P$ that's, the hyperplane goes through the origin.
 \subsection{Halfspaces}
 \subsection{Linear Classification}
 \begin{equation}
