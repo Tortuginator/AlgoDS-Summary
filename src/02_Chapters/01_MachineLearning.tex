@@ -73,3 +73,53 @@ d(x,y) = \sum^{l}_{i=1}|x_i-y_i|
 d(x,y) = |\{\,i\,|\, x_i \neq y_i\}|
 \end{equation}
 \end{multicols}
+
+\subsection{Nearest Neighbour Classifier}
+Problem description: 'Learn' a function $f$, that associates a class $f(x) \in \mathbb{Y}$ with every $x \in \mathbb{X}$. Basically: $f: \mathbb{X} \rightarrow \mathbb{Y},x \mapsto y$. Function $f$ is provided with a dataset to learn from: $(x_1,y_1), \ldots, (x_m,y_m)$ with $m$ entries where each entry corresponds to $(x_i,f(x_i))$. $x_i$ is called data item and $y_i$ is called class $x_i$.
+
+\highlight{k-Nearest Neighbour Classifier} uses $x \in \mathbb{X}$ as input.
+\begin{enumerate}
+	\item Find the $k$ nearest neighbours $x_{i_1},\ldots,x_{i_k}$ of x in $\{x_1,\ldots,x_m\}$
+	\item Take a 'majority vote' of the class that appears the most among $y_{i_1},\ldots,y_{i_k}$
+\end{enumerate}
+
+Choosing a appropriate parameter $k$. When choosing $k=1$ the classifier tends to overhit. While with larger $k$ one might start to oversimplify. Obviously, the right $k$ is difficult to compute and depends heavily on the application.
+
+\subsection{Learning Decision Trees}
+A decision tree is a rooted tree with labelled notes and edges
+\begin{itemize}
+	\item Every internal node of the tree is labelled by an (input) feature
+	\item Every edge is labeled by a value or range of values for the feature labelling its source node.
+	\item Every leaf is labeled with an output value
+\end{itemize}
+Semantics: The function value for an input vector x is the value at the leaf of the unique path in the tree whose edges are labelled by the feature values in $x$.
+
+Note: Computing a smallest decision tree for a given sets of examples is NP-Complete
+\subsubsection{Greedy Algorithm for Building Decision Trees}
+TODO: Greedy Algorithm for Building Decision Trees
+
+\section{The Perceptron}
+The perceptron algorithm attempts tom find a linear classifier for a Boolean classification problem.
+\subsection{Scalar product}
+Two vectors, $\mathbf{x} = (x_1,\ldots,x_l)^T$, $\mathbf{y} = (y_1,\ldots,y_l)^T \in \mathbb{R}^l$ \mathmarginbox{$\langle \mathbf{x},\mathbf{y} \rangle$}
+\begin{equation*}
+\langle \mathbf{x},\mathbf{y} \rangle = \sum_{i=1}^{l} x_iy_i
+\end{equation*}
+\subsection{Euclidean norm}
+Vector $\mathbf{x} \in \mathbb{R}^l$ \mathmarginbox{$\lVert \mathbf{x} \rVert$}
+\begin{equation*}
+\lVert \mathbf{x} \rVert = \sqrt{\langle \mathbf{x},\mathbf{x} \rangle} = \sqrt{ \sum_{i=1}^{l} x_i^2}
+\end{equation*}
+\subsection{Cauchy-Schwarz Inequality}
+\begin{equation}
+| \langle \mathbf{x},\mathbf{y} \rangle | \leq \lVert \mathbf{x} \rVert \cdot \lVert \mathbf{y} \rVert
+\end{equation}
+
+\subsection{Hyperplanes}
+\subsection{Halfspaces}
+\subsection{Linear Classification}
+\begin{equation}
+S=\left(\left(\mathbf{x}_{1}, y_{1}\right), \ldots,\left(\mathbf{x}_{m}, y_{m}\right)\right) \in \mathbb{R}^{\ell} \times\{+1,-1\}
+\end{equation}
+\begin{equation} h(\mathbf{x})=\operatorname{sgn}(\langle\mathbf{w}, \mathbf{x}\rangle- b)=\left\{\begin{array}{ll}{+1} & {\text { if }\langle\mathbf{w}, \mathbf{x}\rangle- b>0} \\ {0} & {\text { if }\langle\mathbf{w}, \mathbf{x}\rangle- b=0} \\ {-1} & {\text { if }\langle\mathbf{w}, \mathbf{x}\rangle- b<0}\end{array}\right.
+\end{equation}
