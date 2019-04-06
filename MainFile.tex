@@ -1,0 +1,116 @@
+%%% File encoding is ISO-8859-1 (also known as Latin-1)
+%%% You can use special characters just like ä,ü and ñ
+%%% LaTeX template by Manuel Kuehner, 2015
+
+%%% If you use this template then please give credit like this:
+%%% ----------------------------
+% LaTeX code inspired by the LaTeX Thesis Template by Manuel Kuehner 
+% www.bedienhaptik.de/latex-template/
+%%% ----------------------------
+
+% ##############################################
+% Start: Template Preamble
+% ##############################################
+%
+
+% Documentclass definition
+\input{src/01_Preamble/documentclass.tex}
+
+% Loading additional packages from the KOMA-Script family
+\input{src/01_Preamble/KOMA-Script-Packages.tex}
+
+% Page layout definition
+\input{src/01_Preamble/PageLayout.tex}
+
+% Standard packages
+\input{src/01_Preamble/CommonPackages.tex}
+
+% ####-Important-####
+%
+% Definition of the two main colors
+% -----------------------
+% The corresponding xcolor package ist loaded in the file 
+% 01_Preamble/StandardPackages.tex
+%
+% ####-Important-####
+\definecolor[named]{myColorMainA}{RGB}{0,26,153}
+\definecolor[named]{myColorMainB}{RGB}{174,49,54}
+
+% Customization of 
+% - Floating Objects (Caption) 
+% - Table of Contents (TOC)
+% - List of Figures
+% - List of Tables
+% - Headings (like chapter, section, etc.)
+\input{src/01_Preamble/Floating-AND-TOC-AND-ListOf-AND-Headings.tex}
+
+% Customization of the header, footer and teh margin note
+\input{src/01_Preamble/HeaderFooterMarginnote.tex}
+
+% Optimize paragraphs (avoid overfull... warnings)
+\input{src/01_Preamble/ParagraphOptimization.tex}
+
+% PDF related packages
+\input{src/01_Preamble/PDF-Related.tex}
+
+
+% Custom macros
+\newcommand{\highlight}[1]{\textbf{\textsf{\textcolor{myColorMainA}{#1}}}}
+\newcommand{\symbdefbox}[2]{\highlight{#1 #2}\mathmarginbox{#2}}
+\newcommand{\mathmarginbox}[1]{\myMarginnote{\scalebox{1.5}{\ifthispageodd{$\blacktriangleleft$}{\null} #1 \ifthispageodd{\null}{$\blacktriangleright$}}}}
+\newcommand{\example}[1]{\small\examplebox{\textit{Example:} #1}}
+% #######################
+% Ende: Template Preamble
+% #######################
+
+% ##############################################
+% Start: Document
+% ##############################################
+%
+% ------------------------------------------------------------------
+\begin{document}
+
+% Title page
+\input{src/02_Chapters/TitlePage.tex}
+% Empty page after title page
+\cleardoublepage
+
+% Activate header and footer defined in the file:
+% 01_Preamble/HeaderFooterMarginnote.tex
+\pagestyle{scrheadings}
+
+% Activate roman numbering (e. g. xii)	
+\pagenumbering{roman}
+
+% Start with page 1 (I)
+\setcounter{page}{1}
+
+
+% Abstract
+\input{src/02_Chapters/Abstract.tex}
+
+% Table of Contents and Lost of Figures/Tables
+\input{src/02_Chapters/TOC-AND-ListOf.tex}
+
+% Activate arabic numbering (e. g. 12)	
+\pagenumbering{arabic}
+
+% Start with page 1
+\setcounter{page}{1}
+
+% Introduction
+\input{src/02_Chapters/Introduction.tex}
+
+% Main Part
+\input{src/02_Chapters/MainPart.tex}
+
+% Final Thoughts
+\input{src/02_Chapters/FinalThoughts.tex}
+
+
+\end{document}
+% ------------------------------------------------------------------
+%
+% #######################
+% End: Document
+% #######################

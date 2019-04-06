@@ -1,0 +1,27 @@
+%%% File encoding is ISO-8859-1 (also known as Latin-1)
+%%% You can use special characters just like ä,ü and ñ
+
+\newcommand*\mnote[3][0pt]{%
+  \ifthispageodd{\reversemarginpar\def\pointer{\filledmedtriangleright}%
+    \def\stackalignment{r}}{\normalmarginpar\def\pointer{\filledmedtriangleleft}%
+    \def\stackalignment{l}}
+  \marginpar{%
+    \topinset{%
+      \scalebox{1.5}{\textcolor{blue}{$\pointer$}}}{%
+      \belowbaseline[-1.5\baselineskip-#1]{%
+        \stackengine%
+          {-5pt}%
+          {\fcolorbox{blue}{white}{\parbox{1.8cm}%
+            {\vspace{3pt}\raggedright#3}}}%
+          {~\colorbox{white}{\sffamily Note}}%
+          {O}%
+          {l}%
+          {F}%
+          {F}%
+          {S}%
+        }%
+      }{%
+      3ex+#1}{%
+      -2ex}%
+  }%
+}

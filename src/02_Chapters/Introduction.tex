@@ -1,0 +1,72 @@
+%%% File encoding is ISO-8859-1 (also known as Latin-1)
+%%% You can use special characters just like ä,ü and ñ
+
+\chapter{Machine Learning Basics}
+
+\section{Definitions}
+All the following definitions are specific to 'Machine Learning' and might change throughout the summary.
+
+
+\highlight{Data} is viewed as a collection of data items (or dataset). A \highlight{data item} is represented by a so-called feature vector. The \highlight{feature vector} basically a list of features and attributes in form of a vector 
+\subsection{Domains}
+The \symbdefbox{Domain}{$\mathbb{D}$} is a set containing the range of all possible values for a single feature. The \symbdefbox{Instance Space}{$\mathbb{X}$} is the Cartesian product of the domains of all features in the feature vector. The number of features is the dimension of the instance space (or the number of entries in the feature vector). 
+\example{The domain space can be something like $\{true,false\}$ or $\mathbb{N}$, aso. The instance space of the domain spaces is then (informally) $\mathbb{D}_1\times \mathbb{D}_2 \times \ldots \times \mathbb{D}_l$}
+Assuming $n$ is the number of data items, and $l$ the number of features the whole dataset can be viewed as an $(n \times l )$-matrix over the instance space.
+
+\section{Forms of Learning}
+\highlight{Unsupervised learning} tries to detect patterns in data with, hence the name, no feedback, supplied the Learning algorithm. This technique is mostly used for clustering.
+
+\highlight{Reinforcement Learning} tries to find actions that maximise reward. The feedback to the learning algorithm is provided in form of a reward (or punishment)
+
+In \highlight{Supervised learning} one tries to approximate a function by training on input-output pairs. \highlight{Classification} has a finite-valued function and tries to predict values for future inputs. \highlight{Regression} has a numerical function and tries to predict the expected values for future inputs. Supervised learning can be differentiated into two different set-ups. First, \highlight{Batch Learning}, in which all examples are supplied at once and the learner has to come up with a hypothesis. Where as in \highlight{Online Learning}, examples are given 'on-the-fly' once at a time and the initial hypothesis gets improved over time.
+
+\highlight{Semi-supervised Learning} is similar to supervised learning, but takes only a few and possibly faulty examples and tries to make the best of the possibly small and faulty dataset.
+
+%TODO: Add Active/Passive Learning
+
+\section{Hypothesis Space}
+In Supervised learning, the unknown target function $h$ is choosen from the \symbdefbox{hypothesis space}{$\mathcal{H}$}, hence $h \in \mathcal{H}$. The Hypothesis space contains all linear functions, all polynomials or all polynomials of a pre-scribed degree, and all functions that can be described by a decision tree.
+
+A learning problem is \highlight{Realisable} if the target function $h$ is in the Hypothesis Space.
+\example{Assuming a target function $h(x):= a \cdot sin(x) + bx + c$. Then, if $\mathcal{H}$ only contains polynomials, the learning problem is \textbf{not realizable}. But, assuming $\mathcal{H}$ contains linear functions or polynomials in $x$ and $sin(x)$, the learning problem \textbf{is realisable}.}
+
+\section{Validation}
+The goal of the learning algorithm is to produce a hypothesis that generalizes well, that is, approximates the target function well ion the all data points (and not only those in the training set). To evaluate how well a hypothesis generalizes we can evaluate it against some test set. A \highlight{test set} is generates by splitting the examples into a test set and training set.
+
+The Empirical Observation that simpler hypothesis tend to generalise better is picked up by \highlight{Occam's Razor} which states, that the simplest hypothesis which is consistent with the data should be choosen.
+
+\highlight{Overfitting} is the phenomenon, which occurs when the leaner tries to match the training examples as exactly as possible which leads to complex hypotheses that generalize badly. Thus, to avoid overfitting, it is often better to choose a simple hypothesis even if it doesn't match the data exactly.
+
+\section{Nearest Neighbour Learning}
+The underlying idea of this simple learning algorithm is to predict the value of a function at point $x$ by looking at known values of points close to the given one and assume the value of $x$ is similar. 
+\subsection{Metric}
+A \symbdefbox{metric}{$d$} on $\mathbb{X}$ is a function $d: \mathbb{X}^2 \longrightarrow  \mathbb{R}$ such that for all $x,y,z \in \mathbb{X}$
+
+\newlength\q
+\setlength\q{\dimexpr .33\textwidth -2\tabcolsep}
+\begin{tabular}{p{\q}|p{\q}|p{\q}}
+	\highlight{Nonnegativity} & \highlight{Symmetry} & \highlight{Triangle Inequality}\\
+	$\begin{aligned} &d(x,y) \geq 0 \\	\texttt{and }  &d(x,y) = 0 \Longleftrightarrow x=y;\end{aligned}$ & 	$d(x,y) = d(y,x)$ &  $d(x,z) \leq d(x,y) + d(y,z)$\\
+\end{tabular}
+
+
+\subsection{Metric Spaces}
+Suppose $\mathbb{X}$ is the instance space, and $d$ be some metric on $\mathbb{X}$. Then we have a \symbdefbox{Metric Space}{$(\mathbb{X},d)$}.
+
+\subsubsection{Common distance metrics}
+The distance between points $x$ and $y$ is denoted as $d(x,y)$\mathmarginbox{$d(x,y)$}.
+
+\highlight{Euclidean distance} with $\mathbb{X} = \mathbb{R}^l$:
+\begin{equation}
+d(x,y) = \sqrt{\sum^{l}_{i=1} (x_i - y_i)^2}
+\end{equation}
+
+\highlight{Manhattan distance} with $\mathbb{X} = \mathbb{R}^l$:
+\begin{equation}
+d(x,y) = \sum^{l}_{i=1}|x_i-y_i|
+\end{equation}
+
+\highlight{Hamming distance} with $\mathbb{X} = \mathbb{D}_1 \times \mathbb{D}_2 \times \ldots \times \mathbb{D}_l$
+\begin{equation}
+d(x,y) = |\{\,i\,|\, x_i \neq y_i\}|
+\end{equation}
