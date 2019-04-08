@@ -136,21 +136,21 @@ The hypothesis space ($\mathcal{H}$) consists of \highlight{linear separators}, 
 \begin{equation} 
 h(\mvec{x})=\operatorname{sgn}(\mscal{\mvec{w}, \mvec{x}}- b)=
 \begin{cases}
-+1 & \, \text {if }\mscal{\mvec{w}, \mathbf{x}} - b>0 \\
-0 & \,\text {if }\mscal{\mvec{w}, \mathbf{x}} - b=0 \\
--1 & \,\text {if }\mscal{\mvec{w}, \mathbf{x}} - b<0
++1 & \, \text {if }\mscal{\mvec{w}, \mvec{x}} - b>0 \\
+0 & \,\text {if }\mscal{\mvec{w}, \mvec{x}} - b=0 \\
+-1 & \,\text {if }\mscal{\mvec{w}, \mvec{x}} - b<0
 \end{cases}
 \end{equation}
 with $w \in \mathbb{R}^\ell$, the weight vector and $b\in \mathbb{R}^\ell$ the bias.
 
-Because the mismatching target function range of $\{+1,0,-1\}$ and $\{+1,-1\}$ is redefined as follows:
-\begin{equation*}
-f(\mathbf{x})=\left\{\begin{array}{ll}{+1} & {\text { if }\langle\mathbf{w}, \mathbf{x}\rangle- b \geq 0} \\ {-1} & {\text { if }\langle\mathbf{w}, \mathbf{x}\rangle- b<0}\end{array}\right.
-\end{equation*}
+Because the mismatching target function range of $\{+1,0,-1\}$ and $\{+1,-1\}$ the linear seperator function is redefined as follows:
+\begin{equation}
+f(\mathbf{x})=\left\{\begin{array}{ll}{+1} & {\text { if } \mscal{\mvec{w}, \mvec{x}} - b \geq 0} \\ {-1} & {\text { if }\mscal{\mvec{w}, \mvec{x}} - b<0}\end{array}\right.
+\end{equation}
 
-A hypothesis $h$ is an \highlight{consistent hypothesis} with a training sequence $S = ((\mathbf{x}_{1}, y_{1}), \ldots,(\mathbf{x}_{m}, y_{m}))$ if $h(\mathbf{x}_i) = y_i$ for all $i \in [m]$.
+A hypothesis $h$ is an \highlight{consistent hypothesis} If for a training sequence $S = ((\mathbf{x}_{1}, y_{1}), \ldots,(\mathbf{x}_{m}, y_{m}))$ the following applies $h(\mathbf{x}_i) = y_i$ for all $i \in [m]$.
 
-\subsubsection{non-bias Linear Classification}
+\subsubsection{Non-bias Linear Classification}
 A \highlight{homogeneous linear separator} is a function, such that $\mathbf{x} \mapsto \mscal{\mvec{w},\mvec{x}}$. This implies, the linear separator goes through the origin of the coordinate system.	
 \begin{theorem}[Properties of non-bias Linear Classification]{important}
 Let $S=((\mvec{x}_{1}, y_{1}), \ldots,(\mvec{x}_{m}, y_{m}))$ with $\mvec{x}_{i}=(x_{i _1}, \ldots, x_{i_\ell}) \in \mathbb{R}^\ell$ and $y_{i} \in\{-1,1\}$ and $\mvec{w}=(w_{1}, \ldots, w_\ell) \in \mathbb{R}^\ell$ and $b \in \mathbb{R}$. Then the following are equivalent.
@@ -160,12 +160,12 @@ Let $S=((\mvec{x}_{1}, y_{1}), \ldots,(\mvec{x}_{m}, y_{m}))$ with $\mvec{x}_{i}
 \end{enumerate}
 \end{theorem}
 \subsubsection{Normalized Linear Classification}
-Intuition: as the name suggests informally, we simply divide all $\mvec{x}$ in the training sequence by the length of the largest $\mvec{x}$ vector. Thus, the largest vector then has a length of at most 1.
+Intuition: as the name suggests informally, we simply divide all $\mvec{x}$ in the training sequence by the length of the largest $\mvec{x}$ vector. Therefore, the largest vector then has a length of at most 1.
 
 Suppose we have a training sequence $S=((\mvec{x}_1, y_1), \ldots,(\mvec{x}_{m}, y_{m}))$ with $\mvec{x}_{i}=(x_{i_1}, \ldots, x_{i_\ell}) \in \mathbb{R}^\ell$ and $y_{i} \in\{-1,1\}$. We can apply the following transformation to all datapoints $\mvec{x}_i$
-\begin{equation*}
+\begin{equation}
 \mvec{x}_{i} \mapsto \widehat{\mvec{x}}_{\mvec{i}} :=\frac{\mvec{x}_{i}^{\prime}}{\max _{1 \leq j \leq m}\lVert\mvec{x}_{j}^{\prime}\rVert}
-\end{equation*}
+\end{equation}
 Resulting in the \highlight{normalized training sequence} $\widehat{S}=((\widehat{\mvec{x}}_{1}, y_{1}), \ldots,(\widehat{\mvec{x}}_{m}, y_{m}))$. Additionally $\widehat{S}$ has following properties: 
 \begin{enumerate}
 	\item $\widehat{S}$ has a homogeneous linear separator if and only if $S$ has alinear separator
@@ -173,9 +173,9 @@ Resulting in the \highlight{normalized training sequence} $\widehat{S}=((\wideha
 \end{enumerate}
 \subsubsection{Linear Seperator Margin}
 The \highlight{margin of a linear seperator} is the orthogonal distance of the nearest point to the linear seperator function $h$. Formally: the margin of $h$ with respect to the target sequence $S$ is
-\begin{equation*}
+\begin{equation}
 \min _{(x, y) \in S}|\mscal{\mvec{w}, \mvec{x}}|
-\end{equation*} 
+\end{equation} 
 \begin{theorem}{}
 	Let S  be a normalized sequence of examples such that there is a homogeneous linear separator consistent with $S$ of margin $\gamma$. Then the perceptron algorithm applied to $S$ finds a linear separator after at most $\frac{1}{\gamma^2}$updates of $w$.
 \end{theorem}
@@ -183,6 +183,7 @@ The \highlight{margin of a linear seperator} is the orthogonal distance of the n
 	See Page 1.46 in the slidedeck for Kap1
 \end{proof}
 \subsubsection{The Perceptron Algorithm}
+TODO: Add Perceptron Algorithm
 \subsubsection{Linear Separation for Nonlinear Problems}
 \section{Neural Networks}
 \section{k-Means Clustering}
