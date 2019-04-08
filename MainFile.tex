@@ -53,12 +53,7 @@
 % PDF related packages
 \input{src/01_Preamble/PDF-Related.tex}
 
-
-% Custom macros
-\newcommand{\highlight}[1]{\textbf{\textsf{\textcolor{myColorMainA}{#1}}}}
-\newcommand{\symbdefbox}[2]{\highlight{#1 #2}\mathmarginbox{#2}}
-\newcommand{\mathmarginbox}[1]{\myMarginnote{\scalebox{1.5}{\ifthispageodd{$\blacktriangleleft$}{\null} #1 \ifthispageodd{\null}{$\blacktriangleright$}}}}
-\newcommand{\example}[1]{\small\examplebox{\textit{Example:} #1}}
+\input{src/01_Preamble/CustomDefinitons.tex}
 % #######################
 % Ende: Template Preamble
 % #######################

@@ -1,0 +1,60 @@
+%MARGIN BOXES
+\newcommand{\highlight}[1]{\textbf{\textsf{\textcolor{myColorMainA}{#1}}}}
+\newcommand{\symbdefbox}[2]{\highlight{#1 #2}\mathmarginbox{#2}}
+\newcommand{\mathmarginbox}[1]{\myMarginnote{\scalebox{1.5}{\ifthispageodd{$\blacktriangleleft$}{\null} #1 \ifthispageodd{\null}{$\blacktriangleright$}}}}
+\newcommand{\example}[1]{\small\examplebox{\textit{Example:} #1}}
+
+%QUICK MATH
+\newcommand{\mscal}[1]{\langle#1\rangle}
+\newcommand{\mvec}[1]{\mathbf{#1}}
+
+%%THEOREM AND PROOF STYLE
+%source:https://tex.stackexchange.com/questions/120964/how-to-create-a-framed-proof-attached-to-a-theorem?rq=1
+\usepackage{amsmath,amsthm,amsfonts}
+\usepackage{lipsum}
+
+%% Other Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable,theorems}
+\usepackage{changepage}% for use of \ifoddpage below
+
+% Theorems ==============
+\definecolor{thmBgColor}{RGB}{250,250,250}
+\definecolor{thmLnColor}{RGB}{200,200,200}
+
+\makeatletter
+% define a new theorem style
+\def\tcb@theo@widetitle#1#2#3{\hbox to \textwidth{\textsc{\large#1}\normalsize\space#3\hfil(#2)}}
+\tcbset{
+	theorem style/theorem wide name and number/.code={ \let\tcb@theo@title=\tcb@theo@widetitle},
+	proofbox/.style={skin=enhancedmiddle,breakable,parbox=false,boxrule=0mm,
+		check odd page, toggle left and right, colframe=thmLnColor,
+		leftrule=8pt, rightrule=0mm, boxsep=0mm,arc=0mm, outer arc=0mm,
+		left=3mm,right=0mm,top=0mm,bottom=0mm, toptitle=0mm,
+		bottomtitle=0mm,colback=white,
+		before={\par\vskip-2pt},after={\par\smallbreak},
+	},
+}
+\newtcolorbox{ProofBox}{proofbox}
+\makeatother
+
+\newtcbtheorem[use counter=equation, number within=section]{mytheorem}{Theorem}%
+{theorem style=theorem wide name and number,enhanced,breakable,
+	arc=0mm,outer arc=0mm,parbox=false,
+	boxrule=0mm,toprule=2pt,bottomrule=2pt,left=1mm,right=1mm,
+	titlerule=0mm,toptitle=0mm,bottomtitle=0mm,top=0mm,
+	colback=thmBgColor,colframe=thmLnColor,
+	title style={color=thmBgColor}, coltitle=black,
+	attach title to upper={\par\noindent},
+	before={\par\vfill\smallbreak\noindent}, after={\par},
+	fonttitle=\normalfont\large,
+}{thm}
+
+\newenvironment{theorem}[2][]{\noindent\mytheorem{#1}{#2}}{\endmytheorem}
+
+\let\realproof\proof
+\let\realendproof\endproof
+\renewenvironment{proof}[1][Proof]{\ProofBox\strut\textsc{#1}\space}{\endProofBox}
+
+%% Style Definitions
+\numberwithin{equation}{section}
