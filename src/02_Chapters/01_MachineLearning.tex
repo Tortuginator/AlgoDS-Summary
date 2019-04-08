@@ -120,9 +120,9 @@ A (affine) \highlight{Hyperplane} in $\mathbb{R}^\ell$ ist an affine subspace of
 
 A \highlight{homogeneous hyperplane} is defined as a Hyperplane $P = \{x \in \mathbb{R}^\ell\,|\, \mscal{\mvec{a}, \mvec{x}} = b\}$ which is homogeneous if $b = 0$, or equivalently, if $0 \in P$ that's, the Hyperplane goes through the origin.
 \subsection{Halfspaces}
-A \highlight{Halfspace} in $\mathbb{R}^{\ell}$ is the set of all points on one side of a hyperplane. A Halfspace can described as the set of solutions $\mathbf{x}$ to an inequality $\langle\mathbf{a}, \mathbf{x}\rangle - b \geq 0$ where $\mathbf{a} \in \mathbb{R}^\ell$ and $b \in \mathbb{R}$. Or more formally: $H = \{x \in \mathbb{R}^\ell \, | \, \langle\mathbf{a}, \mathbf{x}\rangle - b \geq 0\}$
+A \highlight{Halfspace} in $\mathbb{R}^{\ell}$ is the set of all points on one side of a Hyperplane. A Halfspace can described as the set of solutions $\mathbf{x}$ to an inequality $\langle\mathbf{a}, \mathbf{x}\rangle - b \geq 0$ where $\mathbf{a} \in \mathbb{R}^\ell$ and $b \in \mathbb{R}$. Or more formally: $H = \{x \in \mathbb{R}^\ell \, | \, \langle\mathbf{a}, \mathbf{x}\rangle - b \geq 0\}$
 
-A halfspace is a \highlight{homogeneous Halfspace} as follows: $H = \{x \in \mathbb{R}^\ell \, | \, \mscal{\mvec{a}, \mvec{x}} \geq 0\}$. So basically a halfspace with $b = 0$.
+A Halfspace is a \highlight{homogeneous Halfspace} as follows: $H = \{x \in \mathbb{R}^\ell \, | \, \mscal{\mvec{a}, \mvec{x}} \geq 0\}$. So basically a halfspace with $b = 0$.
 
 \subsection{Linear Classification}
 The \highlight{Boolean Classification} is a classification problem with the instance space $\mathbb{X} = \{+1,-1\}$. The goal is to learn a unknown target function $f:\mathbb{R}^\ell \rightarrow \{+1,-1\}$.
@@ -143,15 +143,15 @@ h(\mvec{x})=\operatorname{sgn}(\mscal{\mvec{w}, \mvec{x}}- b)=
 \end{equation}
 with $w \in \mathbb{R}^\ell$, the weight vector and $b\in \mathbb{R}^\ell$ the bias.
 
-Because the mismatching target function range of $\{+1,0,-1\}$ and $\{+1,-1\}$ the linear seperator function is redefined as follows:
+Because of the mismatching target function range of $\{+1,0,-1\}$ and the instance space of the Boolean Classification $\{+1,-1\}$ the linear separator function is redefined as follows:
 \begin{equation}
 f(\mathbf{x})=\left\{\begin{array}{ll}{+1} & {\text { if } \mscal{\mvec{w}, \mvec{x}} - b \geq 0} \\ {-1} & {\text { if }\mscal{\mvec{w}, \mvec{x}} - b<0}\end{array}\right.
 \end{equation}
 
-A hypothesis $h$ is an \highlight{consistent hypothesis} If for a training sequence $S = ((\mathbf{x}_{1}, y_{1}), \ldots,(\mathbf{x}_{m}, y_{m}))$ the following applies $h(\mathbf{x}_i) = y_i$ for all $i \in [m]$.
+A hypothesis $h$ is an \highlight{consistent hypothesis} if for a training sequence $S = ((\mathbf{x}_{1}, y_{1}), \ldots,(\mathbf{x}_{m}, y_{m}))$ the following applies $h(\mathbf{x}_i) = y_i$ for all $i \in [m]$.
 
 \subsubsection{Non-bias Linear Classification}
-A \highlight{homogeneous linear separator} is a function, such that $\mathbf{x} \mapsto \mscal{\mvec{w},\mvec{x}}$. This implies, the linear separator goes through the origin of the coordinate system.	
+A \highlight{homogeneous linear separator} is a function, such that $\mathbf{x} \mapsto \mscal{\mvec{w},\mvec{x}}$. The removal of the bias ($b$) implies, the linear separator goes through the origin of the coordinate system.	
 \begin{theorem}[Properties of non-bias Linear Classification]{important}
 Let $S=((\mvec{x}_{1}, y_{1}), \ldots,(\mvec{x}_{m}, y_{m}))$ with $\mvec{x}_{i}=(x_{i _1}, \ldots, x_{i_\ell}) \in \mathbb{R}^\ell$ and $y_{i} \in\{-1,1\}$ and $\mvec{w}=(w_{1}, \ldots, w_\ell) \in \mathbb{R}^\ell$ and $b \in \mathbb{R}$. Then the following are equivalent.
 \begin{enumerate}
@@ -168,13 +168,13 @@ Suppose we have a training sequence $S=((\mvec{x}_1, y_1), \ldots,(\mvec{x}_{m},
 \end{equation}
 Resulting in the \highlight{normalized training sequence} $\widehat{S}=((\widehat{\mvec{x}}_{1}, y_{1}), \ldots,(\widehat{\mvec{x}}_{m}, y_{m}))$. Additionally $\widehat{S}$ has following properties: 
 \begin{enumerate}
-	\item $\widehat{S}$ has a homogeneous linear separator if and only if $S$ has alinear separator
+	\item $\widehat{S}$ has a homogeneous linear separator if and only if $S$ has a linear separator
 	\item $0 < \lVert\widehat{\mvec{x}}_{\mathrm{i}}\rVert \leq 1 $ for all $ i \in [m]$
 \end{enumerate}
 \subsubsection{Linear Seperator Margin}
-The \highlight{margin of a linear seperator} is the orthogonal distance of the nearest point to the linear seperator function $h$. Formally: the margin of $h$ with respect to the target sequence $S$ is
+The \highlight{margin of a linear seperator} is the orthogonal distance of the nearest point to the linear separator function $h$. Formally: the margin of $h$ with respect to the target sequence $S$ is
 \begin{equation}
-\min _{(x, y) \in S}|\mscal{\mvec{w}, \mvec{x}}|
+\min_{(x, y) \in S}|\mscal{\mvec{w}, \mvec{x}}|
 \end{equation} 
 \begin{theorem}{}
 	Let S  be a normalized sequence of examples such that there is a homogeneous linear separator consistent with $S$ of margin $\gamma$. Then the perceptron algorithm applied to $S$ finds a linear separator after at most $\frac{1}{\gamma^2}$updates of $w$.
