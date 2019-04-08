@@ -183,9 +183,40 @@ The \highlight{margin of a linear seperator} is the orthogonal distance of the n
 	See Page 1.46 in the slidedeck for Kap1
 \end{proof}
 \subsubsection{The Perceptron Algorithm}
-TODO: Add Perceptron Algorithm
+Input: Normalized training sequence $S$\\
+Objective: Compute weight vector $\mvec{w}$ such that the hypothesis $x \mapsto \operatorname{sgn}(\mscal{\mvec{x},\mvec{w}})$ is consistent with $S$
+
+%TODO: FIX LAYOUT
+\begin{algorithmic}
+	\State $w\gets 0$
+	\Repeat 
+		\ForAll{$(x,y) \in S$} 
+		\If {$\operatorname{sgn}(\mscal{\mvec{x},\mvec{w}}) \neq y$}
+			\State $w \gets w + yx$
+		\EndIf
+		\EndFor
+	\Until{$\operatorname{sgn}(\mscal{\mvec{x},\mvec{w}}) = y$ for all $(x,y) \in S$}
+\end{algorithmic}
 \subsubsection{Linear Separation for Nonlinear Problems}
+Suppose the instance space is $\mathbb{R}^2$ and the hypothesis space consists of the quadratic separators if the form:
+\begin{equation}
+(x_1, x_2) \mapsto \operatorname{sgn}(a_1 x_1^2+a_2 x_1 x_2+a_3 x_2^2+a_4 x_1+a_5 x_2+a_6)
+\end{equation}
+To learn the parameters $a_1,\ldots,a_6$, we define a transformation $\tau :\mathbb{R} \rightarrow \mathbb{R}^5$ by
+\begin{equation}
+\tau(x_1,x_2) = (x_1^2,x_1x_2,x_2^2,x_1,x_2)
+\end{equation}
+Then quadratic separators for a training sequence
+\begin{equation}
+S=((\mathrm{x}_{1}, y_{1}), \ldots,(\mathrm{x}_{m}, y_{m})) \in \mathbb{R}^{2} \times\{+1,-1\}
+\end{equation}
+correspond to linear separator for the transformed training sequence
+\begin{equation}
+\tau(S) :=((\tau(\mathrm{x}_{1}), y_{1}), \ldots,(\tau(\mathrm{x}_{m}), y_{m})) \in \mathbb{R}^{5} \times\{+1,-1\}
+\end{equation}
 \section{Neural Networks}
+TODO: Add this section. Maybe later, but not that important, since the section on the slides is very broad
 \section{k-Means Clustering}
+
 \subsection{Centroid Based Clustering}
 \subsection{k-Means Clustering Algorithm}
