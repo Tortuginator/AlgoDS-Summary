@@ -33,7 +33,7 @@ A learning problem is \highlight{Realisable} if the target function $h$ is in th
 \section{Validation}
 The goal of the learning algorithm is to produce a hypothesis that generalizes well, that is, approximates the target function well ion the all data points (and not only those in the training set). To evaluate how well a hypothesis generalizes we can evaluate it against some test set. A \highlight{test set} is generates by splitting the examples into a test set and training set.
 
-The Empirical Observation that simpler hypothesis tend to generalise better is picked up by \highlight{Occam's Razor} which states, that the simplest hypothesis which is consistent with the data should be choosen.
+The empirical observation that simpler hypothesis tend to generalise better is picked up by \highlight{Occam's Razor} which states, that the simplest hypothesis which is consistent with the data should be choosen.
 
 \highlight{Overfitting} is the phenomenon, which occurs when the leaner tries to match the training examples as exactly as possible which leads to complex hypotheses that generalize badly. Thus, to avoid overfitting, it is often better to choose a simple hypothesis even if it doesn't match the data exactly.
 
@@ -116,13 +116,13 @@ Vector $\mathbf{x} \in \mathbb{R}^\ell$ \mathmarginbox{$\lVert \mathbf{x} \rVert
 \end{equation}
 
 \subsection{Hyperplanes}
-A (affine) \highlight{Hyperplane} in $\mathbb{R}^\ell$ ist an affine subspace of dimension $\ell -1$. The hyperplane then describes the set of all solutions $a_1x_1 + \ldots + a_\ell x_\ell = b$ where $a_1,\ldots,a_\ell,b \in \mathbb{R}$. In short:  $\langle\mathbf{a}, \mathbf{x}\rangle - b=0$, or more formally: $P = \{x \in \mathbb{R}^\ell\,|\,\langle\mathbf{a}, \mathbf{x}\rangle = b\}$.
+A (affine) \highlight{Hyperplane} in $\mathbb{R}^\ell$ is an affine subspace of dimension $\ell -1$. The hyperplane then describes the set of all solutions $a_1x_1 + \ldots + a_\ell x_\ell = b$ where $a_1,\ldots,a_\ell,b \in \mathbb{R}$. In short:  $\langle\mathbf{a}, \mathbf{x}\rangle - b=0$, or more formally: $P = \{x \in \mathbb{R}^\ell\,|\,\langle\mathbf{a}, \mathbf{x}\rangle = b\}$.
 
-A \highlight{homogeneous hyperplane} is defined as a hyperplane $P = \{x \in \mathbb{R}^\ell\,|\,\langle\mathbf{a}, \mathbf{x}\rangle = b\}$ which is homogeneous if $b = 0$, or equivalently, if $0 \in P$ that's, the hyperplane goes through the origin.
+A \highlight{homogeneous hyperplane} is defined as a Hyperplane $P = \{x \in \mathbb{R}^\ell\,|\,\langle\mathbf{a}, \mathbf{x}\rangle = b\}$ which is homogeneous if $b = 0$, or equivalently, if $0 \in P$ that's, the hyperplane goes through the origin.
 \subsection{Halfspaces}
-A \highlight{halfspace} in $\mathbb{R}^{\ell}$ is the set of all points on one side of a hyperplane. A halfspace can described as the set of solutions $\mathbf{x}$ to an inequality $\langle\mathbf{a}, \mathbf{x}\rangle - b \geq 0$ where $\mathbf{a} \in \mathbb{R}^\ell$ and $b \in \mathbb{R}$. Or more formally: $H = \{x \in \mathbb{R}^\ell \, | \, \langle\mathbf{a}, \mathbf{x}\rangle - b \geq 0\}$
+A \highlight{Halfspace} in $\mathbb{R}^{\ell}$ is the set of all points on one side of a hyperplane. A halfspace can described as the set of solutions $\mathbf{x}$ to an inequality $\langle\mathbf{a}, \mathbf{x}\rangle - b \geq 0$ where $\mathbf{a} \in \mathbb{R}^\ell$ and $b \in \mathbb{R}$. Or more formally: $H = \{x \in \mathbb{R}^\ell \, | \, \langle\mathbf{a}, \mathbf{x}\rangle - b \geq 0\}$
 
-A halfspace is a \highlight{homogeneous halfspace} as follows: $H = \{x \in \mathbb{R}^\ell \, | \, \langle\mathbf{a}, \mathbf{x}\rangle \geq 0\}$. So basically a halfspace with $b = 0$.
+A Halfspace is a \highlight{homogeneous Halfspace} as follows: $H = \{x \in \mathbb{R}^\ell \, | \, \langle\mathbf{a}, \mathbf{x}\rangle \geq 0\}$. So basically a halfspace with $b = 0$.
 \subsection{Linear Classification}
 The \highlight{Boolean Classification} is a classification problem with the instance space $\mathbb{X} = \{+1,-1\}$. The goal is to learn a unknown target function $f:\mathbb{R}^\ell \rightarrow \{+1,-1\}$.
 
