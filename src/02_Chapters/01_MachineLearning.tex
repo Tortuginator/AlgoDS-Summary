@@ -1,5 +1,5 @@
 %%% File encoding is ISO-8859-1 (also known as Latin-1)
-%%% You can use special characters just like ä,ü and ñ
+%%% You can use special characters just like ï¿½,ï¿½ and ï¿½
 \include{amsmath}
 \chapter{Machine Learning Basics}
 
@@ -33,7 +33,7 @@ A learning problem is \highlight{Realisable} if the target function $h$ is in th
 \section{Validation}
 The goal of the learning algorithm is to produce a hypothesis that generalizes well, that is, approximates the target function well ion the all data points (and not only those in the training set). To evaluate how well a hypothesis generalizes we can evaluate it against some test set. A \highlight{test set} is generates by splitting the examples into a test set and training set.
 
-The Empirical Observation that simpler hypothesis tend to generalise better is picked up by \highlight{Occam's Razor} which states, that the simplest hypothesis which is consistent with the data should be choosen.
+The empirical observation that simpler hypothesis tend to generalise better is picked up by \highlight{Occam's Razor} which states, that the simplest hypothesis which is consistent with the data should be choosen.
 
 \highlight{Overfitting} is the phenomenon, which occurs when the leaner tries to match the training examples as exactly as possible which leads to complex hypotheses that generalize badly. Thus, to avoid overfitting, it is often better to choose a simple hypothesis even if it doesn't match the data exactly.
 
@@ -83,7 +83,7 @@ Problem description: 'Learn' a function $f$, that associates a class $f(x) \in \
 	\item Take a 'majority vote' of the class that appears the most among $y_{i_1},\ldots,y_{i_k}$
 \end{enumerate}
 
-Choosing a appropriate parameter $k$. When choosing $k=1$ the classifier tends to overhit. While with larger $k$ one might start to oversimplify. Obviously, the right $k$ is difficult to compute and depends heavily on the application.
+Choosing an appropriate parameter $k$: When choosing $k=1$ the classifier tends to overhit, while with larger $k$ one might start to oversimplify. Obviously, the optimal value for $k$ is difficult to determine and depends heavily on the application.
 
 \subsection{Learning Decision Trees}
 A decision tree is a rooted tree with labelled notes and edges
@@ -99,7 +99,7 @@ Note: Computing a smallest decision tree for a given sets of examples is NP-Comp
 TODO: Greedy Algorithm for Building Decision Trees
 
 \section{The Perceptron}
-The Perceptron algorithm attempts tom find a linear classifier for a Boolean classification problem.
+The Perceptron algorithm attempts to find a linear classifier for a Boolean classification problem.
 \subsection{Scalar product}
 Two vectors, $\mathbf{x} = (x_1,\ldots,x_l)^T$, $\mathbf{y} = (y_1,\ldots,y_l)^T \in \mathbb{R}^\ell$ \mathmarginbox{$\langle \mathbf{x},\mathbf{y} \rangle$}
 \begin{equation*}
@@ -116,15 +116,16 @@ Vector $\mathbf{x} \in \mathbb{R}^\ell$ \mathmarginbox{$\lVert \mathbf{x} \rVert
 \end{equation}
 
 \subsection{Hyperplanes}
-A (affine) \highlight{Hyperplane} in $\mathbb{R}^\ell$ ist an affine subspace of dimension $\ell -1$. The Hyperplane then describes the set of all solutions $a_1x_1 + \ldots + a_\ell x_\ell = b$ where $a_1,\ldots,a_\ell,b \in \mathbb{R}$. In short:  $\langle\mathbf{a}, \mathbf{x}\rangle - b=0$, or more formally: $P = \{x \in \mathbb{R}^\ell\,|\,\langle\mathbf{a}, \mathbf{x}\rangle = b\}$.
+A (affine) \highlight{Hyperplane} in $\mathbb{R}^\ell$ is an affine subspace of dimension $\ell -1$. It can be described as the set of all solutions $\mathbf{x} \in \mathbb{R}^\ell$ to the equation $a_1x_1 + \ldots + a_\ell x_\ell = b$ where $a_1,\ldots,a_\ell,b \in \mathbb{R}$. In short:  $\langle\mathbf{a}, \mathbf{x}\rangle - b=0$, or more formally: $P = \{x \in \mathbb{R}^\ell\,|\,\langle\mathbf{a}, \mathbf{x}\rangle = b\}$.
 
-A \highlight{homogeneous hyperplane} is defined as a Hyperplane $P = \{x \in \mathbb{R}^\ell\,|\,\langle\mathbf{a}, \mathbf{x}\rangle = b\}$ which is homogeneous if $b = 0$, or equivalently, if $0 \in P$ that's, the Hyperplane goes through the origin.
+A Hyperplane $P = \{x \in \mathbb{R}^\ell\,|\, \mscal{\mvec{a}, \mvec{x}} = b\}$ is \highlight{homogeneous} if $b = 0$, or equivalently, if $0 \in P$. That's, the Hyperplane goes through the origin.
 \subsection{Halfspaces}
-A \highlight{Halfspace} in $\mathbb{R}^{\ell}$ is the set of all points on one side of a hyperplane. A Halfspace can described as the set of solutions $\mathbf{x}$ to an inequality $\langle\mathbf{a}, \mathbf{x}\rangle - b \geq 0$ where $\mathbf{a} \in \mathbb{R}^\ell$ and $b \in \mathbb{R}$. Or more formally: $H = \{x \in \mathbb{R}^\ell \, | \, \langle\mathbf{a}, \mathbf{x}\rangle - b \geq 0\}$
+A \highlight{Halfspace} in $\mathbb{R}^{\ell}$ is the set of all points on one side of a Hyperplane. A Halfspace can be described as the set of solutions $\mathbf{x} \in \mathbb{R}^\ell$ to an inequality $\langle\mathbf{a}, \mathbf{x}\rangle - b \geq 0$ where $\mathbf{a} \in \mathbb{R}^\ell$ and $b \in \mathbb{R}$. Or more formally: $H = \{x \in \mathbb{R}^\ell \, | \, \langle\mathbf{a}, \mathbf{x}\rangle - b \geq 0\}$
 
-A halfspace is a \highlight{homogeneous Halfspace} as follows: $H = \{x \in \mathbb{R}^\ell \, | \, \langle\mathbf{a}, \mathbf{x}\rangle \geq 0\}$. So basically a halfspace with $b = 0$.
+A Halfspace is a \highlight{homogeneous Halfspace} as follows: $H = \{x \in \mathbb{R}^\ell \, | \, \mscal{\mvec{a}, \mvec{x}} \geq 0\}$. So basically a halfspace with $b = 0$.
+
 \subsection{Linear Classification}
-The \highlight{Boolean Classification} is a classification problem with the instance space $\mathbb{X} = \{+1,-1\}$. The goal is to learn a unknown target function $f:\mathbb{R}^\ell \rightarrow \{+1,-1\}$.
+The \highlight{Boolean Classification} is a classification problem with the domain space $\mathbb{D} = \{+1,-1\}$. The goal is to learn an unknown target function $f:\mathbb{R}^\ell \rightarrow \{+1,-1\}$.
 
 The input for the learning function is a sequence of data items (so called training sequence):
 \begin{equation}
@@ -135,22 +136,22 @@ The hypothesis space ($\mathcal{H}$) consists of \highlight{linear separators}, 
 \begin{equation} 
 h(\mvec{x})=\operatorname{sgn}(\mscal{\mvec{w}, \mvec{x}}- b)=
 \begin{cases}
-+1 & \, \text {if }\mscal{\mvec{w}, \mathbf{x}} - b>0 \\
-0 & \,\text {if }\mscal{\mvec{w}, \mathbf{x}} - b=0 \\
--1 & \,\text {if }\mscal{\mvec{w}, \mathbf{x}} - b<0
++1 & \, \text {if }\mscal{\mvec{w}, \mvec{x}} - b>0 \\
+0 & \,\text {if }\mscal{\mvec{w}, \mvec{x}} - b=0 \\
+-1 & \,\text {if }\mscal{\mvec{w}, \mvec{x}} - b<0
 \end{cases}
 \end{equation}
 with $w \in \mathbb{R}^\ell$, the weight vector and $b\in \mathbb{R}^\ell$ the bias.
 
-Because the mismatching target function range of $\{+1,0,-1\}$ and $\{+1,-1\}$ is redefined as follows:
-\begin{equation*}
-f(\mathbf{x})=\left\{\begin{array}{ll}{+1} & {\text { if }\langle\mathbf{w}, \mathbf{x}\rangle- b \geq 0} \\ {-1} & {\text { if }\langle\mathbf{w}, \mathbf{x}\rangle- b<0}\end{array}\right.
-\end{equation*}
+Because of the mismatching target function range of $\{+1,0,-1\}$ and the domain space of the Boolean Classification $\{+1,-1\}$ the linear separator function is redefined as follows:
+\begin{equation}
+f(\mathbf{x})=\left\{\begin{array}{ll}{+1} & {\text { if } \mscal{\mvec{w}, \mvec{x}} - b \geq 0} \\ {-1} & {\text { if }\mscal{\mvec{w}, \mvec{x}} - b<0}\end{array}\right.
+\end{equation}
 
-A hypothesis $h$ is an \highlight{consistent hypothesis} with a training sequence $S = ((\mathbf{x}_{1}, y_{1}), \ldots,(\mathbf{x}_{m}, y_{m}))$ if $h(\mathbf{x}_i) = y_i$ for all $i \in [m]$.
+A hypothesis $h$ is a \highlight{consistent hypothesis} if for a training sequence $S = ((\mathbf{x}_{1}, y_{1}), \ldots,(\mathbf{x}_{m}, y_{m}))$ the following applies: $h(\mathbf{x}_i) = y_i$ for all $i \in [m]$.
 
-\subsubsection{non-bias Linear Classification}
-A \highlight{homogeneous linear separator} is a function, such that $\mathbf{x} \mapsto \mscal{\mvec{w},\mvec{x}}$. This implies, the linear separator goes through the origin of the coordinate system.	
+\subsubsection{Non-bias Linear Classification}
+A \highlight{homogeneous linear separator} is a function, such that $\mathbf{x} \mapsto \mscal{\mvec{w},\mvec{x}}$. The removal of the bias ($b$) implies, the linear separator goes through the origin of the coordinate system.	
 \begin{theorem}[Properties of non-bias Linear Classification]{important}
 Let $S=((\mvec{x}_{1}, y_{1}), \ldots,(\mvec{x}_{m}, y_{m}))$ with $\mvec{x}_{i}=(x_{i _1}, \ldots, x_{i_\ell}) \in \mathbb{R}^\ell$ and $y_{i} \in\{-1,1\}$ and $\mvec{w}=(w_{1}, \ldots, w_\ell) \in \mathbb{R}^\ell$ and $b \in \mathbb{R}$. Then the following are equivalent.
 \begin{enumerate}
@@ -159,22 +160,22 @@ Let $S=((\mvec{x}_{1}, y_{1}), \ldots,(\mvec{x}_{m}, y_{m}))$ with $\mvec{x}_{i}
 \end{enumerate}
 \end{theorem}
 \subsubsection{Normalized Linear Classification}
-Intuition: as the name suggests informally, we simply divide all $\mvec{x}$ in the training sequence by the length of the largest $\mvec{x}$ vector. Thus, the largest vector then has a length of at most 1.
+Intuition: as the name suggests informally, we simply divide all $\mvec{x}$ in the training sequence by the length of the largest $\mvec{x}$ vector. Therefore, the largest vector then has a length of at most 1.
 
 Suppose we have a training sequence $S=((\mvec{x}_1, y_1), \ldots,(\mvec{x}_{m}, y_{m}))$ with $\mvec{x}_{i}=(x_{i_1}, \ldots, x_{i_\ell}) \in \mathbb{R}^\ell$ and $y_{i} \in\{-1,1\}$. We can apply the following transformation to all datapoints $\mvec{x}_i$
-\begin{equation*}
+\begin{equation}
 \mvec{x}_{i} \mapsto \widehat{\mvec{x}}_{\mvec{i}} :=\frac{\mvec{x}_{i}^{\prime}}{\max _{1 \leq j \leq m}\lVert\mvec{x}_{j}^{\prime}\rVert}
-\end{equation*}
+\end{equation}
 Resulting in the \highlight{normalized training sequence} $\widehat{S}=((\widehat{\mvec{x}}_{1}, y_{1}), \ldots,(\widehat{\mvec{x}}_{m}, y_{m}))$. Additionally $\widehat{S}$ has following properties: 
 \begin{enumerate}
 	\item $\widehat{S}$ has a homogeneous linear separator if and only if $S$ has a linear separator
 	\item $0 < \lVert\widehat{\mvec{x}}_{\mathrm{i}}\rVert \leq 1 $ for all $ i \in [m]$
 \end{enumerate}
 \subsubsection{Linear Seperator Margin}
-The \highlight{margin of a linear seperator} is the orthogonal distance of the nearest point to the linear seperator function $h$. Formally: the margin of $h$ with respect to the target sequence $S$ is
-\begin{equation*}
-\min _{(x, y) \in S}|\mscal{\mvec{w}, \mvec{x}}|
-\end{equation*} 
+The \highlight{margin of a linear seperator} is the orthogonal distance of the nearest point to the linear separator function $h$. Formally: the margin of $h$ with respect to the target sequence $S$ is
+\begin{equation}
+\min_{(x, y) \in S}|\mscal{\mvec{w}, \mvec{x}}|
+\end{equation} 
 \begin{theorem}{}
 	Let S  be a normalized sequence of examples such that there is a homogeneous linear separator consistent with $S$ of margin $\gamma$. Then the perceptron algorithm applied to $S$ finds a linear separator after at most $\frac{1}{\gamma^2}$updates of $w$.
 \end{theorem}
@@ -182,8 +183,40 @@ The \highlight{margin of a linear seperator} is the orthogonal distance of the n
 	See Page 1.46 in the slidedeck for Kap1
 \end{proof}
 \subsubsection{The Perceptron Algorithm}
+Input: Normalized training sequence $S$\\
+Objective: Compute weight vector $\mvec{w}$ such that the hypothesis $x \mapsto \operatorname{sgn}(\mscal{\mvec{x},\mvec{w}})$ is consistent with $S$
+
+%TODO: FIX LAYOUT
+\begin{algorithmic}
+	\State $w\gets 0$
+	\Repeat 
+		\ForAll{$(x,y) \in S$} 
+		\If {$\operatorname{sgn}(\mscal{\mvec{x},\mvec{w}}) \neq y$}
+			\State $w \gets w + yx$
+		\EndIf
+		\EndFor
+	\Until{$\operatorname{sgn}(\mscal{\mvec{x},\mvec{w}}) = y$ for all $(x,y) \in S$}
+\end{algorithmic}
 \subsubsection{Linear Separation for Nonlinear Problems}
+Suppose the instance space is $\mathbb{R}^2$ and the hypothesis space consists of the quadratic separators if the form:
+\begin{equation}
+(x_1, x_2) \mapsto \operatorname{sgn}(a_1 x_1^2+a_2 x_1 x_2+a_3 x_2^2+a_4 x_1+a_5 x_2+a_6)
+\end{equation}
+To learn the parameters $a_1,\ldots,a_6$, we define a transformation $\tau :\mathbb{R}^2 \rightarrow \mathbb{R}^5$ by
+\begin{equation}
+\tau(x_1,x_2) = (x_1^2,x_1x_2,x_2^2,x_1,x_2)
+\end{equation}
+Then quadratic separators for a training sequence
+\begin{equation}
+S=((\mathrm{x}_{1}, y_{1}), \ldots,(\mathrm{x}_{m}, y_{m})) \in \mathbb{R}^{2} \times\{+1,-1\}
+\end{equation}
+correspond to linear separator for the transformed training sequence
+\begin{equation}
+\tau(S) :=((\tau(\mathrm{x}_{1}), y_{1}), \ldots,(\tau(\mathrm{x}_{m}), y_{m})) \in \mathbb{R}^{5} \times\{+1,-1\}
+\end{equation}
 \section{Neural Networks}
+TODO: Add this section. Maybe later, but not that important, since the section on the slides is very broad
 \section{k-Means Clustering}
+
 \subsection{Centroid Based Clustering}
 \subsection{k-Means Clustering Algorithm}

@@ -1,0 +1,92 @@
+\chapter{Information and Compression}
+\section{Probability Theory}
+Recall that a probability space consists of a set $\Omega$\mathmarginbox{$\Omega$}, the \highlight{sample space}, a set $\mathcal{E} \subseteq 2^{\Omega}$ , the \highlight{event space}, and a \symbdefbox{probability distribution}{$\mathcal{P}$} that associates an probability $\mathcal{P}(E)$ with each event $E \in \mathcal{E}$.
+
+For an event $A(\omega)$ depending on an element $\omega \in \Omega$ of the sample space we sometimes write $\operatorname{Pr}_{w\sim\mathcal{P}}(A(\omega))$ to denote the probability $\mathcal{P}(A(\omega))$
+
+A \highlight{random variable} on a probability space $(\Omega,\mathcal{P})$ is a mapping $X: \Omega \rightarrow \mathbb{R}$. By $X < x$, for  $x \in \mathbb{R}$, we done the event $\{\omega \in \Omega \,|\, X(\omega) \leq x\}$. We usually denote the probability of this event by $\operatorname{Pr}(X \leq x)$, without reference to the probability distribution $\mathcal{P}$.
+
+The \symbdefbox{cumulative distribution function}{$F_X$} of $X$ is defined by $F_X:\mathbb{R} \rightarrow [0,1]$.
+
+For random variables $X$ with a finite or countably infinite range, we can define the \highlight{probability mass function} $f_X:\mathbb{R} \rightarrow [0,1]$ by $f_X(x) := \operatorname{Pr}(X=x)$. Then have
+\begin{equation*}
+F_X(x)=\sum_{y\leq x}f_x(y)
+\end{equation*}
+This gives us a \symbdefbox{probability distribution}{$\mathcal{P}_x$} the probability distribution of $X$
+\begin{equation*}
+\mathcal{P}_X(A) := \sum_{x \in A} \operatorname{Pr}(X = x)
+\end{equation*}
+
+For continuous random variables (on an arbitrary probability space) there exists a \highlight{propability density function}
+\begin{equation*}
+F_X(x) = \int_{-\infty}^{x}f_x(y)dy
+\end{equation*}
+
+\subsection{Random Vectors and Joint Distributions}
+Let $(X,Y)$ be a pair of random variables with a finite range over the same probability space $(\Omega,\mathcal{P})$. The \highlight{joint distribution of $X,Y$} is the propability fistribution $\mathcal{P}_{(X,Y)}$ on $\mathbb{R}^2$ defined by
+
+\begin{equation*}
+\begin{aligned} 
+\mathcal{P}_{(X, Y)}(\{(x, y)\}):&=\operatorname{Pr}(X=x, Y=y) \\ 
+&=\mathcal{P}(\{\omega \in \Omega | X(\omega)=x \text { and } Y(\omega)=y\}) \end{aligned}
+\end{equation*}
+
+Conversely, from the joint distribution we can retrieve the \highlight{marginal distribution} of $X$
+\begin{equation*}
+\operatorname{Pr}(X=x)=\sum_{y} \operatorname{Pr}((X, Y)=(x, y))
+\end{equation*}
+
+A tuple $\mathbf{X} = (X_1,\ldots,X_k)$ of random variables is sometimes called a \highlight{random vector}
+
+\subsection{Independence}
+Let $(\Omega,P)$ be a probability space and $k \geq 1$. Events $E_1,\ldots,E_k \subseteq$ are \highlight{independent} if $\mathcal{P}\left(E_{1}, \ldots, E_{k}\right)=\mathcal{P}\left(E_{1}\right) \cdots \mathcal{P}\left(E_{k}\right)$. Here $E_1,\ldots,E_k$ denotes the event $E_{1} \cap \ldots \cap E_{k}$.
+
+Random variables $X_1, \ldots, X_k : \Omega \rightarrow \mathbb{R}$ are independent if for all $A_{1}, \ldots, A_{k} \subseteq \mathbb{R}$ the events $X_i \in A_i $ are independent, that is, 
+\begin{equation*}
+\operatorname{Pr}(X_1 \in A_{1}, \ldots, X_k \in A_k)=\operatorname{Pr}(X_1 \in A_1) \cdots \operatorname{Pr}(X_k \in A_k)
+\end{equation*} We also say that the random vector $ \mathbf{X}=(X_1, \ldots, X_k) $ is independent. 
+
+\subsection{Expectation and Variance}
+Let $X$ be a random variable. 
+The expectation of $x$ is $\mathrm{E}(X)=\sum_{x \in \mathbb{R}} x \cdot \operatorname{Pr}(X=x)$
+
+The variance of $X$ is $\operatorname{Var}(X)=E((X-E(X))^{2})$
+
+\begin{enumerate}
+	\item For $\alpha, \beta \in \mathbb{R}, \mathrm{E}(\alpha X+\beta Y)=\alpha \mathrm{E}(X)+\beta \mathrm{E}(Y)$ linearity of expectation
+	\item $X$ and $Y$ are independent then $\mathrm{E}(X \cdot Y)=\mathrm{E}(X) \mathrm{E}(Y)$
+	\item $\operatorname{Var}(X)=\mathrm{E}\left(X^{2}\right)-\mathrm{E}(X)^{2}$
+	\item $X$ and $Y$ are independent then $\operatorname{Var}(X+Y)=\operatorname{Var}(X)+\operatorname{Var}(Y)$
+\end{enumerate}
+
+\subsection{Markov's and Chebyshev's Inequalities}
+\highlight{Markov's Inequality}. Let $X$ be a nonnegative random variable. Then for all $a \geq 0$, 
+\begin{equation}
+\operatorname{Pr}(X \geq a) \leq \frac{E(X)}{a}
+\end{equation}
+\highlight{Chebyshev's Inequality}. Let $X$ be a random variable. Then for all $b > 0$,
+\begin{equation}
+\operatorname{Pr}(|X-\mathrm{E}(X)| \geq b) \leq \frac{\operatorname{Var}(X)}{b^{2}}
+\end{equation}
+\begin{proof}[Proof of Markov's Inequality]
+	See Slide 2.8-a
+\end{proof}
+\begin{proof}[Proof of Chebyshev's Inequalit]
+	See Slide 2.8-a
+\end{proof}
+\subsection{k-Wise Independence}
+A sequence $X_1,\ldots,X_n$ of random variables is \highlight{k-wise independent}, for some $k \geq n$, if for all $i_1 < \ldots < i_k \in [n]$ the sequence $X_{i_1},\ldots,X_{i_k}$ is independent. Instead 2-wise independent, we usually say \highlight{pairwise independent}
+
+Let $X_1,\ldots,X_n$ be a pairwise independent sequence of random variables and $X := \sum_{i=1}^{n}X_i$. Then 
+\begin{equation}
+Var(X) = \sum_{i=1}^n \operatorname{Var}(X_i)
+\end{equation}
+
+\begin{proof}
+	See Slide 2.9-a
+\end{proof}
+\subsection{The Weak Law of Large Numbers}
+ughhfhfhfhfhfhf Aaaaaaaahh!
+\section{Digression: Concentraion Inequalities}
+\section{Entropy}
+\section{Compression}
