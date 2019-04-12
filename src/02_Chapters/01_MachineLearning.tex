@@ -231,7 +231,56 @@ correspond to linear separator for the transformed training sequence
 \end{equation}
 \section{Neural Networks}
 TODO: Add this section. Maybe later, but not that important, since the section on the slides is very broad
-\section{k-Means Clustering}
+\section{$k$-Means Clustering}
+This is the only example of unsupervised learning covered by the lecture.\\
+Task: Put a collection of data points into $k$ clusters whereby the intra-cluster distances are to be minimized and the inter-cluster distances are to be maximized. The number of clusters $k$ is fixed in advance.\\
+Again, we take $\mathbb{R}^\ell$ as the instance space and use the Euclidean metric for distance measurements.\\
 
 \subsection{Centroid Based Clustering}
-\subsection{k-Means Clustering Algorithm}
+In centroid based clustering each cluster in represented by its centroid $z$ (a.k.a. "centre of a mass" or "mean"), i.e. it is represented by the point that minimizes the squared distance to all points in the cluster. Each data point $x$ will be associated with the cluster whose centroid is closest to $x$.\\
+
+Instance: Points $x_1, ..., x_n \in \mathbb{R}^\ell$, number $k \in \mathbb{N}$\\
+Problem: Find points $z^1,...,z^k \in \mathbb{R}^\ell$ and a partition $C^1,...,C^k$ of $\{x_1,...,x_n\}$ that minimizes\\
+\begin{equation}
+	\sum_{j=1}^k \sum_{x \in C^j} \lVert x-z^j \rVert ^2
+\end{equation}
+
+\begin{theorem}{}
+	(1) The Centroid Clustering problem is NP-hard, even if either the dimension $\ell$ or the cluster\\
+	number $k$ are fixed to be 2.\\
+	(2) If both $k$ and $\ell$ are fixed, the problem can be solved in polynomial time.
+\end{theorem}
+\begin{proof}{}
+	was omitted
+\end{proof}
+
+\subsection{$k$-Means Clustering Algorithm}
+Input: $x_1,...,x_n \in \mathbb{R}^\ell$, $k \in \mathbb{N}$\\
+Objective: c.f. 1.8.1\\
+
+\begin{algorithmic}
+	\State{Choose initial "centroids" $z^1,...,z^k$ (for example randomly)}
+	\Repeat 
+		\State{$C^j \gets \emptyset \; \forall \, j \in [k]$}
+	\For{$i \gets 1$ to $n$}
+		\State{$j \gets \arg \min_j \lVert x_i - z^j \rVert$} \hspace{1cm} (if there is a tie, choose the smallest $j$)
+		\State{add $x_i$ to $C^j$}
+	\EndFor
+	\State{$z^j \gets \frac{\sum_{x \in C^j} x}{|C^j|} \forall j \in [k]$}
+	\Until{$C^1,...,C^k$ no longer change}
+	\Return{$C^1,...,C^k$}
+\end{algorithmic}
+
+\begin{theorem}{}
+The $k$-Means algorithm always halts in a finite number of steps.
+\end{theorem}
+\begin{proof}{}
+	See Page 1.56 in the slidedeck for Kap1
+\end{proof}
+
+Remarks on the algorithm:
+\begin{itemize}
+	\item{The number of steps the $k$-Means algortihm takes until it halts may be exponential in the number $n$ of input points - however in practice the algorithm usually converges quickly}
+	\item{The $k$-Means algorithm does not necessarily conpute an optimal solution for the Centroid Clustering problem}
+	\item{The clustering returned by the $k$-Means algorithm may depend on the choice of the inituial centroids $z^1,...,z^k$}
+\end{itemize}
