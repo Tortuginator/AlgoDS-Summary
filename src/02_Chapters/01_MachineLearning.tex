@@ -96,7 +96,22 @@ Semantics: The function value for an input vector x is the value at the leaf of 
 
 Note: Computing a smallest decision tree for a given sets of examples is NP-Complete
 \subsubsection{Greedy Algorithm for Building Decision Trees}
-TODO: Greedy Algorithm for Building Decision Trees
+Input: Set $\mathcal{A}$ of features, set $\mathcal{S}$ of examples\\
+Objective: Compute decision tree $t$
+
+\begin{algorithmic}
+	\If{$\mathcal{S} = \emptyset$}
+		\State{create leaf $t$ with arbitrary value}
+	\ElsIf{all samples in $\mathcal{S}$ have the same $y$-value}
+		\State{create leaf $t$ with that $y$-value}
+	\Else
+		\State{choose feature $A \in \mathcal{A}$ that discriminates best between examples in $\mathcal{S}$}
+		\State{create new node $t$ with feature $A$}
+		\State{partition examples in S according to their $A$-value into parts $S_1, ...,S_m$}
+		\State{recursively call algorithm on $\mathcal{A}\backslash\{A\}$ and the $S_i$ and attach resulting trees $t_i$ as children to $t$}
+	\EndIf\\
+	\Return{$t$}
+\end{algorithmic}
 
 \section{The Perceptron}
 The Perceptron algorithm attempts to find a linear classifier for a Boolean classification problem.
