@@ -86,7 +86,33 @@ Var(X) = \sum_{i=1}^n \operatorname{Var}(X_i)
 	See Slide 2.9-a
 \end{proof}
 \subsection{The Weak Law of Large Numbers}
-ughhfhfhfhfhfhf Aaaaaaaahh!
-\section{Digression: Concentraion Inequalities}
+TODO
+\section{Digression: Concentration Inequalities}
+\subsection{Sum of Random Variables}
+THe sum of a rancom process is follows:
+\begin{equation*}
+X = \sum_{i=1}^{n}X_i
+\end{equation*}
+Obviously, the expected value is $\mu := E(X)$. We show, that with high probability, $X$ is close to its expected value, that is: 
+\begin{equation*}
+\operatorname{Pr}(|X - \mu| \geq \text{something big} ) \leq \text{something small}
+\end{equation*}
+These inequalities are called \highlight{concentration inequalities} or \highlight{tail bounds}.
+\subsection{Chernoff Bounds}
+Let $X_1,\ldots,X_n$ be a sequence of independent $\{0,1\}$-valued random variables. Let $X := \sum^n_{i=1}X_i$ and $\mu := E(X)$. Then for $0 \leq c \leq 1$:
+\begin{equation*}
+\operatorname{Pr}(X \geq (1+c)\mu)\leq e^{-\frac{\mu c^2}{3}}\\
+\text{ and } \operatorname{Pr}(X \leq (1-c)\mu)\leq e^{-\frac{\mu c^2}{2}}
+\end{equation*}
+\subsection{Hoeffding Bounds}
+Let $X_1,\ldots,X_n$ be a sequence of independent identically distributed $\{0,1\}$-valued random variables. Let $X := \sum^n_{i=1}X_i$ and $\mu := E(X)$. Then for $0 \leq d \leq 1$:
+\begin{equation*}
+\operatorname{Pr}(X \geq \mu +dn)\leq e^{-2nd^2}\\
+\text{ and } \operatorname{Pr}(X \leq \mu -dn)\leq e^{-2nd^2}
+\end{equation*}
+\subsection{General Random variable concentration}
+\begin{theorem}[General random variable Concentration]
+Let $X_1,\ldots,X_n$ be a sequence of independent random variable swit $E(X_i) = 0$ and $\operatorname{Var}(X_i) \leq \sigma^2$, and $X:= \sum^{n}_{i=1}X_i$. Let $a \in \mathbb{R}$ such that $0\leq a\leq \sqrt{2}n\sigma^2$ and suppose that $E(X_i^k) \leq \sigma^2k!$ for $3 \leq k \leq \lceil\frac{a^2}{4n\sigma^2}\rceil$. Then $\operatorname{Pr}(|X| \geq a) \leq 3e^{-\frac{a^2}{12n\sigma^2}}$.
+\end{theorem}
 \section{Entropy}
 \section{Compression}
