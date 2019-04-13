@@ -89,7 +89,7 @@ Var(X) = \sum_{i=1}^n \operatorname{Var}(X_i)
 TODO
 \section{Digression: Concentration Inequalities}
 \subsection{Sum of Random Variables}
-THe sum of a rancom process is follows:
+The sum of a rancom process is follows:
 \begin{equation*}
 X = \sum_{i=1}^{n}X_i
 \end{equation*}
@@ -115,4 +115,63 @@ Let $X_1,\ldots,X_n$ be a sequence of independent identically distributed $\{0,1
 Let $X_1,\ldots,X_n$ be a sequence of independent random variable swit $E(X_i) = 0$ and $\operatorname{Var}(X_i) \leq \sigma^2$, and $X:= \sum^{n}_{i=1}X_i$. Let $a \in \mathbb{R}$ such that $0\leq a\leq \sqrt{2}n\sigma^2$ and suppose that $E(X_i^k) \leq \sigma^2k!$ for $3 \leq k \leq \lceil\frac{a^2}{4n\sigma^2}\rceil$. Then $\operatorname{Pr}(|X| \geq a) \leq 3e^{-\frac{a^2}{12n\sigma^2}}$.
 \end{theorem}
 \section{Entropy}
+The \symbdefbox{information content}{$I(A)$} of a event $A$ in a finite probability space $(\Omega,\mathcal{P})$ is:
+\begin{equation*}
+I(A) = \operatorname{log}(\frac{1}{\mathcal{P}(A)})
+\end{equation*}
+
+\begin{proof}
+	Proof and Lemma for the corresponding base of the logarithm on Slide $2.20-(a-c)$
+\end{proof}
+
+The \highlight{entropy} of a probability distribution $\mathcal{P}$ on a finite sample space $\Omega$ is defined to be
+\begin{equation*}
+H(\mathcal{P}) := \sum_{w \in \Omega}\mathcal{P}(\{w\})* \operatorname{log}\frac{1}{\mathcal{P}(\{w\})}
+\end{equation*}
+where we take $0 \operatorname{log}(1/0)$ to be 0 (or only sum over all $w$ with $\mathcal{P}(w)>0$).
+
+The \highlight{entropy} of a random variable $X$ with finite range is defined to be 
+\begin{equation*}
+H(X) := \sum_{x\in rg(X)}\operatorname{Pr}(X \, = \, x)* \operatorname{log}\frac{1}{\operatorname{Pr}(X \, = \, x)}
+\end{equation*}
+%TODO: what is the rg function?
+\subsection{Lower and Upper Bounds}
+ Let $\mathcal{P}$ be a probability distribution on a sample space $\Omega$ of size $|\Omega|=n$ Then
+ \begin{equation*}
+ 	0 \leq H(\mathcal{P}) \leq \log n
+ \end{equation*}
+ Furthermore, 
+ \begin{equation*}
+	H(\mathcal{P})=0 \Longleftrightarrow \exists \omega \in \Omega : \mathcal{P}(\{\omega\})=1
+ \end{equation*}
+ and
+ \begin{equation*}
+ \begin{split} 
+ H(\mathcal{P})=\log (n) \Longleftrightarrow & \mathcal{P} \text { is the uniform distribution, that } \\ & \text { is, } \mathcal{P}(\{\omega\})=1 / n \text { for all } \omega \in \Omega 
+ \end{split}
+ \end{equation*}
+
+  Let $f : D \rightarrow \mathbb{R} $ , where $ D \subseteq \mathbb{R} . $ Then $ f $ is convex if for all $ \lambda \in[0,1] $ and all $ x, y \in D $ it holds that $ \lambda x+(1-\lambda) y \in D $ and 
+  \begin{equation*}
+  f(\lambda x+(1-\lambda) y) \leq \lambda f(x)+(1-\lambda) f(y)
+  \end{equation*} 
+If $f(\lambda x+(1-\lambda) y<\lambda f(x)+(1-\lambda) f(y)$ for all $ \lambda \in(0,1)$ and all distinct $ x, y \in D $ then $f$ is strictly convex.
+\subsubsection{Jensen's Inequality}
+Let $X$ be a random variable, and let $ f : D \rightarrow \mathbb{R} \text { be a convex function} \text {with } \operatorname{rg}(X) \subseteq D . \text { Then } E(X) \in D$ and 
+\begin{equation*}
+f(\mathrm{E}(X)) \leq \mathrm{E}(f(X))
+\end{equation*}
+$f$ is strictly convex, then equality holds if and only if $X$
+\begin{proof}
+	Proof on page 2.24-(a-c)
+\end{proof}
+\subsection{Log Sum Inequality}
+For all $ i \in[n]$, let $ p_{i} \in \mathbb{R}_{ \geq 0}$,$ q_{i} \in \mathbb{R}_{>0}$, and let $ p :=\sum_{i} p_{i} $ and $q :=\sum_{i} q_{i}$. Then 
+\begin{equation*}
+\sum_{i=1}^{n} p_{i} \log (\frac{p_{i}}{q_{i}}) \geq p \log (\frac{p}{q})
+\end{equation*}
+Moreover, equality holds if and only if $p_i/q_i \, = \, p_j/q_j$ for all $i,j$
+\begin{proof}
+	Proof on page 2.25-(a-c)
+\end{proof}
 \section{Compression}
