@@ -23,7 +23,7 @@ F_X(x) = \int_{-\infty}^{x}f_x(y)dy
 \end{equation*}
 
 \subsection{Random Vectors and Joint Distributions}
-Let $(X,Y)$ be a pair of random variables with a finite range over the same probability space $(\Omega,\mathcal{P})$. The \highlight{joint distribution of $X,Y$} is the propability fistribution $\mathcal{P}_{(X,Y)}$ on $\mathbb{R}^2$ defined by
+Let $(X,Y)$ be a pair of random variables with a finite range over the same probability space $(\Omega,\mathcal{P})$. The \highlight{joint distribution of $X,Y$} is the probability distribution $\mathcal{P}_{(X,Y)}$ on $\mathbb{R}^2$ defined by
 
 \begin{equation*}
 \begin{aligned} 
@@ -111,7 +111,8 @@ Let $X_1,\ldots,X_n$ be a sequence of independent identically distributed $\{0,1
 \text{ and } \operatorname{Pr}(X \leq \mu -dn)\leq e^{-2nd^2}
 \end{equation*}
 \subsection{General Random variable concentration}
-\begin{theorem}[General random variable Concentration]
+
+\begin{theorem}[General random variable Concentration]{important}
 Let $X_1,\ldots,X_n$ be a sequence of independent random variable swit $E(X_i) = 0$ and $\operatorname{Var}(X_i) \leq \sigma^2$, and $X:= \sum^{n}_{i=1}X_i$. Let $a \in \mathbb{R}$ such that $0\leq a\leq \sqrt{2}n\sigma^2$ and suppose that $E(X_i^k) \leq \sigma^2k!$ for $3 \leq k \leq \lceil\frac{a^2}{4n\sigma^2}\rceil$. Then $\operatorname{Pr}(|X| \geq a) \leq 3e^{-\frac{a^2}{12n\sigma^2}}$.
 \end{theorem}
 \section{Entropy}
@@ -174,4 +175,23 @@ Moreover, equality holds if and only if $p_i/q_i \, = \, p_j/q_j$ for all $i,j$
 \begin{proof}
 	Proof on page 2.25-(a-c)
 \end{proof}
+\subsection{Information Gain \& Entropy}
+TODO - Slides are not very understandable -- come up with something better
 \section{Compression}
+Out intuition behind the entropy of a probability distribution $\mathcal{P}$ is that it measures the average 'Information' of a sample from $\mathcal{P}$, that is, of an elementary event $\{w\}$.
+\begin{itemize}
+	\item Information is the average number of bit we need to transfer (or store) many conservative samples from a distribution, using the best possible coding scheme for this specific distribution.
+	\item Suppose we have a string where the symbols are independently sampled from our distribution. Then the information content of the distribution should measure how well we can compress the string.
+\end{itemize}
+Strings are compressed over a finite \symbdefbox{source alphabet}{$\Sigma$}. We assume $\Sigma \geq 2$. Compressed strings are encoded in the \highlight{target alphabet} $\{0,1\}$. A \highlight{compression scheme} over $\Sigma$ is a pair $\Gamma = (\operatorname{com}_\Gamma,\operatorname{dec}_\Gamma)$ consisting of
+\begin{itemize}
+	\item \highlight{compression mapping}\mathmarginbox{$\operatorname{com}_\Gamma$}  $\operatorname{com}_\Gamma\text{ : }\Sigma\rightarrow \{0,1\}^*$ 
+	\item \highlight{decompression mapping}\mathmarginbox{$\operatorname{dec}_\Gamma$}  $\operatorname{dec}_\Gamma\text{ : }\{0,1\}^* \rightarrow \Sigma^*$.
+\end{itemize} 
+
+The goal is to have a compression scheme, that is ideally \highlight{lossless}, that is $dec(com(\vec{x})) = x$ for all $x \in \Sigma^*$, and guarantees a good compression. 
+
+The \highlight{compression rate} of a scheme $\Gamma$ $\vec{X}$ is $\frac{|com(\vec{x})|}{|\vec{x}|}$. Intuitively, the compression rate if $\Gamma$ is the maximum of the compression rates $\Gamma$ of all strings in $\Gamma^*$. As this maximum does not necessarily exist, we define a compression rate for strings of length $n$ separately for each $n$: the compression rate of $\Gamma$ is the function \mathmarginbox{$\rho_{\Gamma}$}$\rho_{\Gamma} : \mathbb{N} \rightarrow \mathbb{R}$ defined by 
+\begin{equation*}
+\rho_{\Gamma}(n) :=\max _{x \in \Sigma^{n}} \frac{|\operatorname{com}(x)|}{|x|}
+\end{equation*}
